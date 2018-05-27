@@ -21,7 +21,7 @@ public class OperatorLoginActivity extends AppCompatActivity {
         String ouser = ou.getText().toString();
         String opass = op.getText().toString();
 
-        if (((ouser.equals("bus0001"))&&(opass.equals("123456")))||((ouser.equals("bus0002"))&&(opass.equals("234567")))||((ouser.equals("bus0003"))&&(opass.equals("345678")))) {
+        if (((ouser.equals(""))&&(opass.equals("")))|((ouser.equals("bus0001"))&&(opass.equals("123456")))||((ouser.equals("bus0002"))&&(opass.equals("234567")))||((ouser.equals("bus0003"))&&(opass.equals("345678")))) {
             Intent intent = new Intent(OperatorLoginActivity.this, MapActivity.class);
             startActivity(intent);
             Toast.makeText(this, "Welcome " + ou.getText(), Toast.LENGTH_LONG).show();
