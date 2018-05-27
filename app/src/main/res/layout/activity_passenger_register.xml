@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_passenger_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2d415a"
+    tools:context="com.example.dillichalise.driverdai.PassengerRegisterActivity">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="#2d415a"
+                android:src="@drawable/bus1"
+                 />
+
+            <EditText
+                android:id="@+id/pname"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:textColor="#fff"
+                android:textColorHint="#bcc6c6"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/imageButton"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="13dp"
+                android:ems="10"
+                android:paddingStart="8dp"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/puname"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:textColor="#fff"
+                android:textColorHint="#bcc6c6"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/pname"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:paddingStart="8dp"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/pmn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:textColor="#fff"
+                android:textColorHint="#bcc6c6"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/puname"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:hint="Mobile Number"
+                android:paddingStart="8dp"
+                android:inputType="phone"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/pemail"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:textColor="#fff"
+                android:textColorHint="#bcc6c6"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/pmn"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:hint="Email"
+                android:paddingStart="8dp"
+                android:inputType="textEmailAddress"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ppassword"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:textColor="#fff"
+                android:textColorHint="#bcc6c6"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/pemail"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:hint="Password"
+                android:paddingStart="8dp"
+                android:inputType="textPassword"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/preenterpass"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/back"
+                android:textColor="#fff"
+                android:textColorHint="#bcc6c6"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ppassword"
+                android:layout_marginBottom="35dp"
+                android:ems="10"
+                android:paddingStart="8dp"
+                android:hint="Re-enter Password"
+                android:inputType="textPassword"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/preenterpass"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="22dp"
+                android:onClick="onPSignUpClick"
+                android:text="Create Account"
+                android:textAlignment="center"
+                android:background="#009a9c"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button2"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:text="Already a member?"
+                android:textColor="#fff"
+                android:textStyle="normal|italic" />
+
+            <TextView
+                android:id="@+id/plogin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:onClick="onPLoginClick"
+                android:text="  Login"
+                android:textColor="#0000ff"
+                android:textColorLink="@color/colorPrimary"
+                android:textStyle="normal|italic"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/member"
+                android:layout_toEndOf="@+id/member" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
