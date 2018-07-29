@@ -1,6 +1,7 @@
 package com.example.dillichalise.driverdai;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -29,6 +30,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private GoogleMap mMap;
     LocationManager locationManager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         //check whether the network provider is enabled
             if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
+                    @SuppressLint("MissingPermission")
                     @Override
                     public void onLocationChanged(Location location) {
                         double latitude = location.getLatitude();  //get the latitude of current location
@@ -68,10 +71,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         }
                         String str = addressList.get(0).getLocality()+",";
                         str += addressList.get(0).getCountryName();
-
                         mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(12).build();
+
+                        mMap.setMyLocationEnabled(true);
+
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(13).build();
                         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
 
                     }
 
@@ -111,9 +117,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     str += addressList.get(0).getCountryName();
 
                     mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                   CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(12).build();
-                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                 //   mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                   CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(13).build();
+                   mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
                 }
 
@@ -166,8 +172,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap.addMarker(new MarkerOptions().position(ktm).title("Marker in kathmandu"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ktm));*/
 
-
-       /* CameraPosition cameraPosition = new CameraPosition.Builder().target(ktm).zoom(12).build();
+/*
+        LatLng ktm = new LatLng(27.7172, 85.3240);
+     CameraPosition cameraPosition = new CameraPosition.Builder().target(ktm).zoom(12).build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
 
 
@@ -199,6 +206,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
     @Override
     public void onBackPressed() {
+        finish();
         super.onBackPressed();
         Intent intent = new Intent(MapActivity.this, PassengerLoginActivity.class);
         startActivity(intent);

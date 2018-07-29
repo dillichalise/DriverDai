@@ -23,6 +23,7 @@ public class WelcomeActivity extends Activity {
 
     public void onOperatorSelectClick(View v) {
         if (v.getId() == R.id.OperatorSelect) {
+            finish();
             Intent j = new Intent(WelcomeActivity.this, OperatorLoginActivity.class);
             startActivity(j);
         }
@@ -30,6 +31,7 @@ public class WelcomeActivity extends Activity {
 
     public void onPassengerSelectClick(View v) {
         if (v.getId() == R.id.PassengerSelect) {
+            finish();
             Intent j = new Intent(WelcomeActivity.this, PassengerLoginActivity.class);
             startActivity(j);
         }

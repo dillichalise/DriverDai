@@ -55,7 +55,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/puname"
+                android:id="@+id/pemail"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:background="@drawable/back"
@@ -84,7 +84,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/puname"
+                android:layout_below="@+id/pemail"
                 android:layout_marginBottom="25dp"
                 android:ems="10"
                 android:hint="Mobile Number"
@@ -150,18 +150,18 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/pregister"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@+id/preenterpass"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="22dp"
-                android:onClick="onPSignUpClick"
                 android:text="Create Account"
                 android:textAlignment="center"
                 android:background="#009a9c"
                 android:textColor="#fff"
                 android:textStyle="bold"
+                android:onClick="onPSignUpClick"
                 android:textSize="18sp" />
 
 
@@ -169,7 +169,7 @@
                 android:id="@+id/member"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/button2"
+                android:layout_below="@+id/pregister"
                 android:layout_centerHorizontal="true"
                 android:textSize="18sp"
                 android:text="Already a member?"

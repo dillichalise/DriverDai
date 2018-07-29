@@ -47,12 +47,16 @@
             android:name=".MapActivity"
             android:label="@string/title_activity_maps"
             android:screenOrientation="portrait" />
-        <activity android:name=".FormActivity" />
-        <activity android:name=".ViewlistActivity" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".HomeActivity" />
         <activity android:name=".PassengerLoginActivity" />
         <activity android:name=".OperatorLoginActivity" />
+        <activity android:name=".BusDetailActivity" />
+        <activity android:name=".BlankActivity" />
+        <activity android:name=".MainActivity"/>
+        <activity
+            android:name=".PassengerProfileActivity"
+            android:label="@string/title_activity_passenger_profile"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

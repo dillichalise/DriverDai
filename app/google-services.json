@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "507261851813",
+    "firebase_url": "https://driverdai-714df.firebaseio.com",
+    "project_id": "driverdai-714df",
+    "storage_bucket": "driverdai-714df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507261851813:android:2f0e1e7c29c51895",
+        "android_client_info": {
+          "package_name": "com.example.dillichalise.driverdai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507261851813-ibb0488krc198475h5mr41g672rlqldv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dillichalise.driverdai",
+            "certificate_hash": "260ea9e8af868c133b1fba7b6c37b2b7a91248a4"
+          }
+        },
+        {
+          "client_id": "507261851813-sin7mip6vk4eerf7hs4151nqu9kpbv0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASU6oLLz3W6_mg3CsnCaD4kAQpPnz2ERU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507261851813-sin7mip6vk4eerf7hs4151nqu9kpbv0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

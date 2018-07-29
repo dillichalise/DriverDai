@@ -22,7 +22,9 @@ public class OperatorLoginActivity extends AppCompatActivity {
         String opass = op.getText().toString();
 
         if (((ouser.equals(""))&&(opass.equals("")))|((ouser.equals("bus0001"))&&(opass.equals("123456")))||((ouser.equals("bus0002"))&&(opass.equals("234567")))||((ouser.equals("bus0003"))&&(opass.equals("345678")))) {
-            Intent intent = new Intent(OperatorLoginActivity.this, MapActivity.class);
+            finish();
+            Intent intent = new Intent(OperatorLoginActivity.this, PassengerProfileActivity.class);
+            intent.putExtra("username", ouser);
             startActivity(intent);
             Toast.makeText(this, "Welcome " + ou.getText(), Toast.LENGTH_LONG).show();
         } else {
@@ -33,12 +35,7 @@ public class OperatorLoginActivity extends AppCompatActivity {
         ou.setText("");
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(OperatorLoginActivity.this, WelcomeActivity.class);
-        startActivity(intent);
-    }
+
 
 
 }

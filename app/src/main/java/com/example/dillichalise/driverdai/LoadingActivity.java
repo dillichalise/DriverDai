@@ -20,6 +20,7 @@ public class LoadingActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                finish();
                 Intent i= new Intent(LoadingActivity.this, WelcomeActivity.class);
                 startActivity(i);
                 this.finish();
