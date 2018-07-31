@@ -1,9 +1,11 @@
 package com.example.dillichalise.driverdai;
 
+import java.util.List;
+
 /**
- * Created by chandrasekar on 14/02/16.
+ * Created by dillichalise on 29/07/18.
  */
 public interface OnSeatSelected {
 
-    void onSeatSelected(int count);
+    void onSeatSelected(List<Integer> selectedItems, int count);
 }

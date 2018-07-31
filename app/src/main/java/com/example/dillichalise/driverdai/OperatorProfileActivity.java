@@ -1,13 +1,13 @@
 package com.example.dillichalise.driverdai;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class BlankActivity extends AppCompatActivity {
+public class OperatorProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blank);
+        setContentView(R.layout.activity_operator_profile);
     }
 }

@@ -38,17 +38,50 @@ public class AirplaneAdapter extends SelectableAdapter<RecyclerView.ViewHolder> 
             imgSeat = (ImageView) itemView.findViewById(R.id.img_seat);
             imgSeatSelected = (ImageView) itemView.findViewById(R.id.img_seat_selected);
 
-
         }
 
     }
 
-    private static class EmptyViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
+        int type = mItems.get(position).getType();
+        if (type == AbstractItem.TYPE_CENTER) {
+            final CenterItem item = (CenterItem) mItems.get(position);
+            CenterViewHolder holder = (CenterViewHolder) viewHolder;
+            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toggleSelection(position);
+                    mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
+                }
+            });
+            if (item.is_booked) {
+                holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal_booked));
+                holder.imgSeat.setEnabled(false);
+            }
 
-        public EmptyViewHolder(View itemView) {
-            super(itemView);
+            holder.imgSeatSelected.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+
+        } else if (type == AbstractItem.TYPE_EDGE) {
+            final EdgeItem item = (EdgeItem) mItems.get(position);
+            EdgeViewHolder holder = (EdgeViewHolder) viewHolder;
+            if (item.is_booked) {
+                holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal_booked));
+                holder.imgSeat.setEnabled(false);
+            }
+
+            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toggleSelection(position);
+                    mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
+                }
+            });
+
+
+            holder.imgSeatSelected.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
+
         }
-
     }
 
     private Context mContext;
@@ -87,49 +120,12 @@ public class AirplaneAdapter extends SelectableAdapter<RecyclerView.ViewHolder> 
         }
     }
 
-    @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
-        int type = mItems.get(position).getType();
-        if (type == AbstractItem.TYPE_CENTER) {
-            final CenterItem item = (CenterItem) mItems.get(position);
-            CenterViewHolder holder = (CenterViewHolder) viewHolder;
+    private static class EmptyViewHolder extends RecyclerView.ViewHolder {
 
 
-
-
-            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-
-                    toggleSelection(position);
-
-                    mOnSeatSelected.onSeatSelected(getSelectedItemCount());
-                }
-            });
-
-            holder.imgSeatSelected.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
-
-        } else if (type == AbstractItem.TYPE_EDGE) {
-            final EdgeItem item = (EdgeItem) mItems.get(position);
-            EdgeViewHolder holder = (EdgeViewHolder) viewHolder;
-
-
-
-            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    toggleSelection(position);
-                    mOnSeatSelected.onSeatSelected(getSelectedItemCount());
-
-
-                }
-            });
-
-            holder.imgSeatSelected.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
-
+        public EmptyViewHolder(View itemView) {
+            super(itemView);
         }
-    }
 
+    }
 }

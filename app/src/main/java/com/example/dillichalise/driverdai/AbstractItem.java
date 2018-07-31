@@ -7,10 +7,13 @@ public abstract class AbstractItem {
     public static final int TYPE_EMPTY = 2;
 
     private String label;
+    public boolean is_booked;
+    public int id;
 
-
-    public AbstractItem(String label) {
+    public AbstractItem(String label, boolean is_booked, int id) {
         this.label = label;
+        this.is_booked = is_booked;
+        this.id = id;
     }
 
 

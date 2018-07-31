@@ -50,13 +50,13 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".PassengerLoginActivity" />
         <activity android:name=".OperatorLoginActivity" />
-        <activity android:name=".BusDetailActivity" />
-        <activity android:name=".BlankActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".OperatorProfileActivity" />
         <activity
             android:name=".PassengerProfileActivity"
             android:label="@string/title_activity_passenger_profile"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".OperatorActivity"></activity>
     </application>
 
 </manifest>

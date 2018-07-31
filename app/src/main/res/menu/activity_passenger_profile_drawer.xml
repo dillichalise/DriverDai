@@ -9,22 +9,15 @@
             android:icon="@drawable/ic_profile"
             android:title="Profile" />
         <item
-            android:id="@+id/routes"
+            android:id="@+id/short_routes"
             android:icon="@drawable/ic_bus"
-            android:title="Routes">
+            android:title="Short Routes" />
 
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_bus"
-                    android:icon="@drawable/ic_bus"
-                    android:title="Routes" />
 
-                <item
-                    android:id="@+id/long_routes"
-                    android:icon="@drawable/ic_bus"
-                    android:title="Routes" />
-            </group>
-        </item>
+        <item
+            android:id="@+id/long_routes"
+            android:icon="@drawable/ic_bus"
+            android:title="Long Routes" />
 
 
         <item

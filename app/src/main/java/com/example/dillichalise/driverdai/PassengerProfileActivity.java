@@ -2,9 +2,6 @@ package com.example.dillichalise.driverdai;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,6 +18,7 @@ public class PassengerProfileActivity extends AppCompatActivity
 
     private DrawerLayout drawer;
     private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +36,6 @@ public class PassengerProfileActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
     }
-
 
 
     @Override
@@ -72,13 +69,17 @@ public class PassengerProfileActivity extends AppCompatActivity
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
 
-            case R.id.nav_bus:
+            case R.id.short_routes:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BusFragment()).commit();
+                break;
+
+            case R.id.long_routes:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LongRouteFragment()).commit();
                 break;
 
 
             case R.id.nav_logout:
-               firebaseAuth.getInstance().signOut();
+                firebaseAuth.getInstance().signOut();
                 startActivity(new Intent(this, PassengerLoginActivity.class));
                 break;
         }

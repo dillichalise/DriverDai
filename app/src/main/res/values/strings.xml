@@ -10,4 +10,27 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="From">
+        <item>Kathmandu</item>
+        <item>Butwal</item>
+    </string-array>
+    <string-array name="To">
+        <item>Kathmandu</item>
+        <item>Butwal</item>
+    </string-array>
+
+    <string-array name="busesbtl">
+        <item>Bus Service 1 </item>
+        <item>Bus Service 2 </item>
+    </string-array>
+
+    <string-array name="busespkr">
+        <item>Bus Service 1 </item>
+        <item>Bus Service 2 </item>
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

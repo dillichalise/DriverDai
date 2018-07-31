@@ -1,8 +1,8 @@
 package com.example.dillichalise.driverdai;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,9 +21,9 @@ public class OperatorLoginActivity extends AppCompatActivity {
         String ouser = ou.getText().toString();
         String opass = op.getText().toString();
 
-        if (((ouser.equals(""))&&(opass.equals("")))|((ouser.equals("bus0001"))&&(opass.equals("123456")))||((ouser.equals("bus0002"))&&(opass.equals("234567")))||((ouser.equals("bus0003"))&&(opass.equals("345678")))) {
+        if (((ouser.equals("")) && (opass.equals(""))) | ((ouser.equals("bus0001")) && (opass.equals("123456"))) || ((ouser.equals("bus0002")) && (opass.equals("234567"))) || ((ouser.equals("bus0003")) && (opass.equals("345678")))) {
             finish();
-            Intent intent = new Intent(OperatorLoginActivity.this, PassengerProfileActivity.class);
+            Intent intent = new Intent(OperatorLoginActivity.this, OperatorProfileActivity.class);
             intent.putExtra("username", ouser);
             startActivity(intent);
             Toast.makeText(this, "Welcome " + ou.getText(), Toast.LENGTH_LONG).show();
@@ -34,8 +34,6 @@ public class OperatorLoginActivity extends AppCompatActivity {
         op.setText("");
         ou.setText("");
     }
-
-
 
 
 }

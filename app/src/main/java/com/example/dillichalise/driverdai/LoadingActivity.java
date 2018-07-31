@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class LoadingActivity extends AppCompatActivity {
     private static int splashInterval = 2000;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +22,14 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void run() {
                 finish();
-                Intent i= new Intent(LoadingActivity.this, WelcomeActivity.class);
+                Intent i = new Intent(LoadingActivity.this, WelcomeActivity.class);
                 startActivity(i);
                 this.finish();
             }
 
-            private void finish(){
+            private void finish() {
 
             }
-        },splashInterval);
+        }, splashInterval);
     }
 }

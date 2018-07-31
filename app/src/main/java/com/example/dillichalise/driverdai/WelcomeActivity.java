@@ -13,7 +13,7 @@ import android.widget.Toast;
  */
 
 public class WelcomeActivity extends Activity {
-    boolean doubleTap= false;
+    boolean doubleTap = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,8 +41,7 @@ public class WelcomeActivity extends Activity {
     public void onBackPressed() {
         if (doubleTap) {
             super.onBackPressed();
-        }
-        else {
+        } else {
             Toast.makeText(this, "Press back again to exit the app!", Toast.LENGTH_SHORT).show();
             doubleTap = true;
             Handler handler = new Handler();

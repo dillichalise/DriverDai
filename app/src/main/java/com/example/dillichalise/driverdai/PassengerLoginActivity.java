@@ -22,13 +22,8 @@ public class PassengerLoginActivity extends Activity {
     private ProgressDialog progress;
 
 
-
-
-
-
     EditText email, password;
     String Lemail, Lpassword;
-
 
 
     @Override
@@ -39,7 +34,7 @@ public class PassengerLoginActivity extends Activity {
         firebaseAuth = FirebaseAuth.getInstance();
         progress = new ProgressDialog(this);
 
-        if(firebaseAuth.getCurrentUser() != null){
+        if (firebaseAuth.getCurrentUser() != null) {
             //close this activity
             finish();
             //opening profile activity
@@ -50,38 +45,37 @@ public class PassengerLoginActivity extends Activity {
     }
 
     public void onPLogInClick(View v) {
-            Lemail = email.getText().toString();
-            Lpassword = password.getText().toString().trim();
-            if(TextUtils.isEmpty(Lemail)){
-                Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
-                return;
-            }
+        Lemail = email.getText().toString();
+        Lpassword = password.getText().toString().trim();
+        if (TextUtils.isEmpty(Lemail)) {
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
+            return;
+        }
 
-            if(TextUtils.isEmpty(Lpassword)){
-                Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
-                return;
-            }
+        if (TextUtils.isEmpty(Lpassword)) {
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
+            return;
+        }
 
-            progress.setMessage("Logging In,   please wait");
-            progress.show();
+        progress.setMessage("Logging In,   please wait");
+        progress.show();
 
-            firebaseAuth.signInWithEmailAndPassword(Lemail, Lpassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
+        firebaseAuth.signInWithEmailAndPassword(Lemail, Lpassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
 
 
-                    if (task.isSuccessful()){
-                        startActivity(new Intent(PassengerLoginActivity.this, PassengerProfileActivity.class));
-                        Toast.makeText(PassengerLoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                    else{
-                        Log.e("PassengerLoginn",task.getException().getMessage());
-                        Toast.makeText(PassengerLoginActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
-                    }
-                    progress.dismiss();
+                if (task.isSuccessful()) {
+                    startActivity(new Intent(PassengerLoginActivity.this, PassengerProfileActivity.class));
+                    Toast.makeText(PassengerLoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Log.e("PassengerLoginn", task.getException().getMessage());
+                    Toast.makeText(PassengerLoginActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
                 }
-            });
+                progress.dismiss();
+            }
+        });
     }
 
     public void onPRegisterClick(View v) {

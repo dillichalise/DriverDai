@@ -14,19 +14,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PassengerRegisterActivity extends AppCompatActivity {
 
 
+    String RName, RUsername, RMobile, REmail, RPassword, RReenterpass;
+    EditText name, username, mobile, email, password, reenterPassword;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progress;
 
-    String RName, RUsername, RMobile, REmail,RPassword,RReenterpass;
-    EditText name,username,mobile,email,password,reenterPassword;
-
-
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_register);
 
@@ -42,45 +41,43 @@ public class PassengerRegisterActivity extends AppCompatActivity {
 
     }
 
-    public void onPSignUpClick(View v){
+    public void onPSignUpClick(View v) {
 
-             RName = name.getText().toString().trim();
-             RUsername = username.getText().toString().trim();
-             RMobile = mobile.getText().toString().trim();
-             REmail = email.getText().toString().trim();
-             RPassword = password.getText().toString().trim();
-             RReenterpass = reenterPassword.getText().toString().trim();
+        RName = name.getText().toString().trim();
+        RUsername = username.getText().toString().trim();
+        RMobile = mobile.getText().toString().trim();
+        REmail = email.getText().toString().trim();
+        RPassword = password.getText().toString().trim();
+        RReenterpass = reenterPassword.getText().toString().trim();
 
-            progress.setMessage("Registering,   please wait");
-            progress.show();
+        progress.setMessage("Registering,   please wait");
+        progress.show();
 
-            firebaseAuth.createUserWithEmailAndPassword(REmail, RPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(PassengerRegisterActivity.this, "Register Successful", Toast.LENGTH_SHORT).show();
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), PassengerProfileActivity.class));
+        firebaseAuth.createUserWithEmailAndPassword(REmail, RPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(PassengerRegisterActivity.this, "Register Successful", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), PassengerProfileActivity.class));
+                    FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(FirebaseAuth.getInstance().getCurrentUser());
+                } else {
+                    Log.e("PassengerRegister", task.getException().getMessage());
+                    Toast.makeText(PassengerRegisterActivity.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
 
-                    } else {
-                        Log.e("PassengerRegister",task.getException().getMessage());
-                        Toast.makeText(PassengerRegisterActivity.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
-
-                    }
-                    progress.dismiss();
                 }
-            });
+                progress.dismiss();
+            }
+        });
 
 
     }
 
-    public void onPLoginClick(View v){
+    public void onPLoginClick(View v) {
 
         finish();
         startActivity(new Intent(this, PassengerLoginActivity.class));
     }
-
-
 
 
 }

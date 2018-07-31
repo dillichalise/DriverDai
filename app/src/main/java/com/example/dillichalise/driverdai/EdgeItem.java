@@ -2,8 +2,9 @@ package com.example.dillichalise.driverdai;
 
 public class EdgeItem extends AbstractItem {
 
-    public EdgeItem(String label) {
-        super(label);
+
+    public EdgeItem(String label, boolean is_booked, int id) {
+        super(label, is_booked, id);
     }
 
 
