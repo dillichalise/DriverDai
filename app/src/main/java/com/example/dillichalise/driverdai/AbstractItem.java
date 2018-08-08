@@ -8,6 +8,7 @@ public abstract class AbstractItem {
 
     private String label;
     public boolean is_booked;
+    public boolean is_vacant;
     public int id;
 
     public AbstractItem(String label, boolean is_booked, int id) {
@@ -15,6 +16,8 @@ public abstract class AbstractItem {
         this.is_booked = is_booked;
         this.id = id;
     }
+
+
 
 
     public String getLabel() {

@@ -52,11 +52,12 @@
         <activity android:name=".OperatorLoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".OperatorProfileActivity" />
+        <activity android:name=".OperatorViewSeatsActivity" />
         <activity
             android:name=".PassengerProfileActivity"
             android:label="@string/title_activity_passenger_profile"
             android:theme="@style/AppTheme" />
-        <activity android:name=".OperatorActivity"></activity>
+        <activity android:name=".PassengerSeats" />
     </application>
 
 </manifest>

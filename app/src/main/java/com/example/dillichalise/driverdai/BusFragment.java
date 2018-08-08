@@ -152,16 +152,6 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ll_seat_1: {
-//                if(value){
-//                    databaseReference.setValue(false);
-//                    ivSeat1.setEnabled(false);
-//                }else {
-//                    databaseReference.setValue(true);
-//                }
-            }
 
-        }
     }
 }

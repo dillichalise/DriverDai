@@ -1,11 +1,14 @@
 package com.example.dillichalise.driverdai;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import java.util.List;
 
@@ -75,6 +78,14 @@ public class AirplaneAdapter extends SelectableAdapter<RecyclerView.ViewHolder> 
                 public void onClick(View v) {
                     toggleSelection(position);
                     mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
+/*
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(AirplaneAdapter.this);
+                    View mview = getLayoutInflater().inflate(R.layout.activity_dialog, null);
+                    alert.setTitle("choose location");
+                    Spinner mspinner = (Spinner) mview.findViewById(R.id.spinnerfrom);
+                    Spinner mspinner1 = (Spinner) mview.findViewById(R.id.spinnerto);
+                    alert.setMessage("destination");
+*/
                 }
             });
 

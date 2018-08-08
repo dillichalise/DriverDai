@@ -14,19 +14,36 @@
         <ImageView
             android:id="@+id/buslogo"
             android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/bus1" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:text="Welcome"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"
+                android:text="Welcome"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/amount_textbox"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
 
         <TextView
             android:layout_width="wrap_content"

@@ -125,7 +125,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/view-seats"
+        android:id="@+id/opview_seats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/info"

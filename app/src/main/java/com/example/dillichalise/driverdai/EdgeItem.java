@@ -9,9 +9,12 @@ public class EdgeItem extends AbstractItem {
 
 
 
+
+
     @Override
     public int getType() {
         return TYPE_EDGE;
     }
 
 }
+
