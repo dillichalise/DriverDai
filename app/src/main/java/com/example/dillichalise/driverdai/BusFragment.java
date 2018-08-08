@@ -2,12 +2,14 @@ package com.example.dillichalise.driverdai;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,18 +23,23 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class BusFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, View.OnClickListener {
 
     private GoogleMap mMap;
     private View view;
     private LinearLayout seat1;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("locations").child("Bus");
     private bus1 value;
     private Dialog dialog;
     private ImageView ivSeat1;
-
+    private Double latitude,longitude;
+    private ValueEventListener valueEventListener;
 
     @Nullable
     @Override
@@ -44,6 +51,27 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, GoogleM
         dialog.setTitle("Bus JAS");
         View dialogView = View.inflate(getActivity(), R.layout.busseat_layout, null);
         dialog.setContentView(dialogView);
+        final ProgressDialog progressDialog=new ProgressDialog(getActivity());
+        progressDialog.setTitle("Available bus");
+        progressDialog.setMessage("Please wait while bus location are being fetched");
+        progressDialog.show();
+         valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("location", dataSnapshot.getValue().toString());
+                progressDialog.hide();
+                latitude = dataSnapshot.child("latitude").getValue(Double.class);
+                longitude = dataSnapshot.child("longitude").getValue(Double.class);
+                LatLng kalanki = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(kalanki).title("Bus-Buddhi driver").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
       /*  seat1 = (LinearLayout) dialogView.findViewById(R.id.ll_seat_1);
         ivSeat1 = (ImageView) dialogView.findViewById(R.id.iv_seat_1);
         seat1.setOnClickListener(this);*/
@@ -110,29 +138,27 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, GoogleM
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
 
 
-        LatLng kalanki = new LatLng(27.6931, 85.2807);
-        googleMap.addMarker(new MarkerOptions().position(kalanki).title("Bus0001").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
 
-        LatLng rabibhawan = new LatLng(27.696729, 85.293814);
-        googleMap.addMarker(new MarkerOptions().position(rabibhawan).title("Bus0002").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
-
-        LatLng kalimati = new LatLng(27.698391, 85.299372);
-        googleMap.addMarker(new MarkerOptions().position(kalimati).title("Bus0003").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
-
-        LatLng teku = new LatLng(27.696244, 85.307078);
-        googleMap.addMarker(new MarkerOptions().position(teku).title("Bus0004").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
-
-        LatLng tripureshwor = new LatLng(27.694276, 85.312192);
-        googleMap.addMarker(new MarkerOptions().position(tripureshwor).title("Bus0005").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
-
-        LatLng chowk = new LatLng(27.694234, 85.314136);
-        googleMap.addMarker(new MarkerOptions().position(chowk).title("Bus0006").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
-
-        LatLng rnac = new LatLng(27.702432, 85.313615);
-        googleMap.addMarker(new MarkerOptions().position(rnac).title("Bus0007").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
-
-        LatLng ratnapark = new LatLng(27.706716, 85.315380);
-        googleMap.addMarker(new MarkerOptions().position(ratnapark).title("Bus0008").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+//        LatLng rabibhawan = new LatLng(27.696729, 85.293814);
+//        googleMap.addMarker(new MarkerOptions().position(rabibhawan).title("Bus0002").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+//
+//        LatLng kalimati = new LatLng(27.698391, 85.299372);
+//        googleMap.addMarker(new MarkerOptions().position(kalimati).title("Bus0003").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+//
+//        LatLng teku = new LatLng(27.696244, 85.307078);
+//        googleMap.addMarker(new MarkerOptions().position(teku).title("Bus0004").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+//
+//        LatLng tripureshwor = new LatLng(27.694276, 85.312192);
+//        googleMap.addMarker(new MarkerOptions().position(tripureshwor).title("Bus0005").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+//
+//        LatLng chowk = new LatLng(27.694234, 85.314136);
+//        googleMap.addMarker(new MarkerOptions().position(chowk).title("Bus0006").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+//
+//        LatLng rnac = new LatLng(27.702432, 85.313615);
+//        googleMap.addMarker(new MarkerOptions().position(rnac).title("Bus0007").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+//
+//        LatLng ratnapark = new LatLng(27.706716, 85.315380);
+//        googleMap.addMarker(new MarkerOptions().position(ratnapark).title("Bus0008").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
 
     }
 
@@ -152,6 +178,12 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
     }
 }

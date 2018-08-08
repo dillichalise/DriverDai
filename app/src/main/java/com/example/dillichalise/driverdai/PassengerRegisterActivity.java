@@ -61,6 +61,8 @@ public class PassengerRegisterActivity extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(getApplicationContext(), PassengerProfileActivity.class));
                     FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(FirebaseAuth.getInstance().getCurrentUser());
+                    FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("balance").setValue(400);
+
                 } else {
                     Log.e("PassengerRegister", task.getException().getMessage());
                     Toast.makeText(PassengerRegisterActivity.this, "Unsuccessful", Toast.LENGTH_SHORT).show();

@@ -12,13 +12,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:padding="8dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Bus 001" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,15 +97,16 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="end"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/steering" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lst_items"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
         android:layout_weight="9" />
 
     <Button
@@ -112,6 +115,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:background="#009688"
         android:gravity="center"
         android:text="Book"

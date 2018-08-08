@@ -5,51 +5,55 @@
     android:background="#2d415a">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/buslogo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/bus1" />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:textAlignment="center"
                 android:layout_marginTop="10dp"
                 android:text="Welcome"
+                android:id="@+id/username"
                 android:textColor="#fff"
                 android:textSize="20sp" />
-
+<!--
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:id="@+id/amount_textbox"
                 android:layout_marginTop="10dp"
                 android:textColor="#fff"
-                android:textSize="20sp" />
+                android:textSize="20sp" />-->
 
         </LinearLayout>
 
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:text="Amount"
+            android:textAlignment="center"
+            android:id="@+id/amount"
             android:textColor="#fff"
             android:textSize="20sp" />
 
@@ -59,9 +63,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="#009a9c"
+            android:layout_gravity="center"
             android:elevation="0dp"
             android:padding="15dp"
-            android:text="View My Seats"
+            android:text="View Short route seats"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/view-pl-seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="#009a9c"
+            android:layout_gravity="center"
+            android:elevation="0dp"
+            android:padding="15dp"
+            android:text="View Long route seats"
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="18sp"

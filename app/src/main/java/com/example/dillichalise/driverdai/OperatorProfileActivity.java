@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class OperatorProfileActivity extends AppCompatActivity {
 
     @Override
@@ -22,6 +24,7 @@ public class OperatorProfileActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 
 

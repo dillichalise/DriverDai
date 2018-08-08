@@ -57,7 +57,7 @@
         </Spinner>
 
         <Button
-            android:id="@+id/view-p-seats"
+            android:id="@+id/long_seats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

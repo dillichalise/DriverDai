@@ -12,23 +12,43 @@
     <string name="action_settings">Settings</string>
 
     <string-array name="From">
+        <item>Select Entry Location</item>
         <item>Kathmandu</item>
         <item>Butwal</item>
     </string-array>
     <string-array name="To">
+        <item>Select Destination</item>
         <item>Kathmandu</item>
         <item>Butwal</item>
     </string-array>
 
     <string-array name="busesbtl">
+        <item>Select Bus</item>
         <item>Bus Service 1 </item>
         <item>Bus Service 2 </item>
     </string-array>
 
     <string-array name="busespkr">
+        <item>Select Bus</item>
         <item>Bus Service 1 </item>
         <item>Bus Service 2 </item>
 
+    </string-array>
+
+    <string-array name="LocationPick">
+        <item>Choose Location…</item>
+        <item>Kalanki</item>
+        <item>Khasibazar</item>
+        <item>Balkhu</item>
+        <item>koteshwor</item>
+        <item>balkumari</item>
+        <item>satdobato</item>
+        <item>gwarko</item>
+        <item>sinamangal</item>
+        <item>airport</item>
+        <item>chabhel</item>
+        <item>chakrapath</item>
+        <item>balaju</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

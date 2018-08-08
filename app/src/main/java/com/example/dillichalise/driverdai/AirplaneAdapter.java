@@ -1,48 +1,30 @@
 package com.example.dillichalise.driverdai;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Spinner;
 
 import java.util.List;
 
 public class AirplaneAdapter extends SelectableAdapter<RecyclerView.ViewHolder> {
 
     private OnSeatSelected mOnSeatSelected;
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
+    private List<AbstractItem> mItems;
+    private boolean clicksDisabled;
 
-    private static class EdgeViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView imgSeat;
-        private final ImageView imgSeatSelected;
 
 
-        public EdgeViewHolder(View itemView) {
-            super(itemView);
-            imgSeat = (ImageView) itemView.findViewById(R.id.img_seat);
-            imgSeatSelected = (ImageView) itemView.findViewById(R.id.img_seat_selected);
 
-        }
-
-    }
-
-    private static class CenterViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView imgSeat;
-        private final ImageView imgSeatSelected;
-
-        public CenterViewHolder(View itemView) {
-            super(itemView);
-            imgSeat = (ImageView) itemView.findViewById(R.id.img_seat);
-            imgSeatSelected = (ImageView) itemView.findViewById(R.id.img_seat_selected);
-
-        }
-
+    public AirplaneAdapter(Context context, List<AbstractItem> items) {
+        mOnSeatSelected = (OnSeatSelected) context;
+        mContext = context;
+        mLayoutInflater = LayoutInflater.from(context);
+        mItems = items;
     }
 
     @Override
@@ -51,18 +33,21 @@ public class AirplaneAdapter extends SelectableAdapter<RecyclerView.ViewHolder> 
         if (type == AbstractItem.TYPE_CENTER) {
             final CenterItem item = (CenterItem) mItems.get(position);
             CenterViewHolder holder = (CenterViewHolder) viewHolder;
-            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    toggleSelection(position);
-                    mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
-                }
-            });
+            if (!clicksDisabled) {
+                holder.imgSeat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toggleSelection(position);
+                        mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
+                    }
+                });
+            }
             if (item.is_booked) {
                 holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal_booked));
                 holder.imgSeat.setEnabled(false);
+            } else {
+                holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal));
             }
-
             holder.imgSeatSelected.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
 
         } else if (type == AbstractItem.TYPE_EDGE) {
@@ -71,40 +56,23 @@ public class AirplaneAdapter extends SelectableAdapter<RecyclerView.ViewHolder> 
             if (item.is_booked) {
                 holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal_booked));
                 holder.imgSeat.setEnabled(false);
+            } else {
+                holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal));
             }
 
-            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    toggleSelection(position);
-                    mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
-/*
-                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(AirplaneAdapter.this);
-                    View mview = getLayoutInflater().inflate(R.layout.activity_dialog, null);
-                    alert.setTitle("choose location");
-                    Spinner mspinner = (Spinner) mview.findViewById(R.id.spinnerfrom);
-                    Spinner mspinner1 = (Spinner) mview.findViewById(R.id.spinnerto);
-                    alert.setMessage("destination");
-*/
-                }
-            });
+            if (!clicksDisabled) {
+                holder.imgSeat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toggleSelection(position);
+                        mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
+                    }
+                });
 
-
+            }
             holder.imgSeatSelected.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
 
         }
-    }
-
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
-
-    private List<AbstractItem> mItems;
-
-    public AirplaneAdapter(Context context, List<AbstractItem> items) {
-        mOnSeatSelected = (OnSeatSelected) context;
-        mContext = context;
-        mLayoutInflater = LayoutInflater.from(context);
-        mItems = items;
     }
 
     @Override
@@ -129,6 +97,39 @@ public class AirplaneAdapter extends SelectableAdapter<RecyclerView.ViewHolder> 
             View itemView = new View(mContext);
             return new EmptyViewHolder(itemView);
         }
+    }
+
+    public void setClicksDisabled(boolean clicksDisabled) {
+        this.clicksDisabled = clicksDisabled;
+    }
+
+    private static class EdgeViewHolder extends RecyclerView.ViewHolder {
+
+        private final ImageView imgSeatSelected;
+        ImageView imgSeat;
+
+
+        public EdgeViewHolder(View itemView) {
+            super(itemView);
+            imgSeat = (ImageView) itemView.findViewById(R.id.img_seat);
+            imgSeatSelected = (ImageView) itemView.findViewById(R.id.img_seat_selected);
+
+        }
+
+    }
+
+    private static class CenterViewHolder extends RecyclerView.ViewHolder {
+
+        private final ImageView imgSeatSelected;
+        ImageView imgSeat;
+
+        public CenterViewHolder(View itemView) {
+            super(itemView);
+            imgSeat = (ImageView) itemView.findViewById(R.id.img_seat);
+            imgSeatSelected = (ImageView) itemView.findViewById(R.id.img_seat_selected);
+
+        }
+
     }
 
     private static class EmptyViewHolder extends RecyclerView.ViewHolder {

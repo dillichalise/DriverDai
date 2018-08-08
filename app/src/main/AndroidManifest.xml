@@ -58,6 +58,7 @@
             android:label="@string/title_activity_passenger_profile"
             android:theme="@style/AppTheme" />
         <activity android:name=".PassengerSeats" />
+        <activity android:name=".LongRouteViewSeats" />
     </application>
 
 </manifest>
