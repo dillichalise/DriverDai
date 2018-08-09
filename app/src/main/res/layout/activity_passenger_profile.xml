@@ -27,6 +27,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+
         </FrameLayout>
 
     </LinearLayout>

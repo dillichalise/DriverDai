@@ -14,18 +14,15 @@
     <string-array name="From">
         <item>Select Entry Location</item>
         <item>Kathmandu</item>
-        <item>Butwal</item>
     </string-array>
     <string-array name="To">
         <item>Select Destination</item>
-        <item>Kathmandu</item>
         <item>Butwal</item>
     </string-array>
 
     <string-array name="busesbtl">
         <item>Select Bus</item>
         <item>Bus Service 1 </item>
-        <item>Bus Service 2 </item>
     </string-array>
 
     <string-array name="busespkr">
@@ -53,4 +50,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="location_updated">Location Updated</string>
+    <string name="launch_activity">LaunchActivity</string>
+    <string name="remove_location_updates">Remove location udpate</string>
 </resources>

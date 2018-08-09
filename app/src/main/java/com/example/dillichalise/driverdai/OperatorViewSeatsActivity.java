@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,9 @@ public class OperatorViewSeatsActivity extends AppCompatActivity implements OnSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bus_seat_layout);
+
+        TextView txtfare = (TextView) findViewById(R.id.fare);
+        txtfare.setVisibility(View.GONE);
         final List<AbstractItem> items = new ArrayList<>();
 //        for (int i = 0; i < seats.size(); i++) {
 //            items.add(getItem(i));

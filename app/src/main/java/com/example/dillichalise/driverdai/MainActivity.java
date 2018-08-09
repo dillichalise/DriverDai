@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnSeatSelected {
             }
         });
         txtSeatSelected = (TextView) findViewById(R.id.txt_seat_selected);
+
         txtSeatSelected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +121,9 @@ public class MainActivity extends AppCompatActivity implements OnSeatSelected {
         final boolean isPassenger = getIntent().getBooleanExtra("isPassenger", false);
         if (isPassenger) {
             adapter.setClicksDisabled(true);
-            txtSeatSelected.setVisibility(View.GONE);
+            TextView txtseat = (TextView) findViewById(R.id.fare);
+
+            txtseat.setVisibility(View.GONE);
             reference = FirebaseDatabase.getInstance().getReference().child("Bus");
         } else {
             reference = FirebaseDatabase.getInstance().getReference().child("Bus");

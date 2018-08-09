@@ -62,8 +62,8 @@ public class BusFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 progressDialog.hide();
                 latitude = dataSnapshot.child("latitude").getValue(Double.class);
                 longitude = dataSnapshot.child("longitude").getValue(Double.class);
-                LatLng kalanki = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().position(kalanki).title("Bus-Buddhi driver").snippet("kalanki-ratnapark").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
+                LatLng aa = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(aa).title("Bus001").snippet("ringroad yatayat").icon(BitmapDescriptorFactory.fromResource(R.drawable.busicon)));
 
             }
 

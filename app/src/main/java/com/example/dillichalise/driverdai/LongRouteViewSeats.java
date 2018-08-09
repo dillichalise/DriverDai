@@ -8,8 +8,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ import java.util.List;
 public class LongRouteViewSeats extends AppCompatActivity implements OnSeatSelected {
 
     private static final int COLUMNS = 5;
+    Query ref;
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("LongBus");
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     List<Seat> seats = new ArrayList<>();
@@ -59,36 +63,36 @@ public class LongRouteViewSeats extends AppCompatActivity implements OnSeatSelec
             }
         });
 
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Seat seat = dataSnapshot.getValue(Seat.class);
-                seat.key = dataSnapshot.getKey();
-                seats.add(seat);
-                items.add(getItem(seat.id, seat));
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        reference.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                Seat seat = dataSnapshot.getValue(Seat.class);
+//                seat.key = dataSnapshot.getKey();
+//                seats.add(seat);
+//                items.add(getItem(seat.id, seat));
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
         Button txtSeatSelected = (Button) findViewById(R.id.txt_seat_selected);
         Button txtSeatCancelled = (Button) findViewById(R.id.txt_seat_cancel);
@@ -138,6 +142,56 @@ public class LongRouteViewSeats extends AppCompatActivity implements OnSeatSelec
 
                 }
                 finish();
+
+            }
+        });
+
+        final boolean isPassenger = getIntent().getBooleanExtra("isPassenger", false);
+        if (isPassenger) {
+            adapter.setClicksDisabled(true);
+            TextView txtseat = (TextView) findViewById(R.id.fare);
+
+            txtseat.setVisibility(View.GONE);
+            txtSeatSelected.setVisibility(View.GONE);
+            txtSeatCancelled.setVisibility(View.GONE);
+            ref = FirebaseDatabase.getInstance().getReference().child("LongBus");
+        } else {
+            ref = FirebaseDatabase.getInstance().getReference().child("LongBus");
+
+        }
+
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.e("Snapshot", dataSnapshot.getValue().toString());
+
+                Seat seat = dataSnapshot.getValue(Seat.class);
+                if (isPassenger) {
+                    seat.is_booked = seat.booked_by != null && seat.booked_by.equals(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                }
+                seat.key = dataSnapshot.getKey();
+                seats.add(seat);
+                items.add(getItem(seat.id, seat));
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });

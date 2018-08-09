@@ -59,6 +59,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".PassengerSeats" />
         <activity android:name=".LongRouteViewSeats" />
+
     </application>
 
 </manifest>

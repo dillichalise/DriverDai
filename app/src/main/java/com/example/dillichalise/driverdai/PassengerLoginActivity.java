@@ -24,6 +24,7 @@ public class PassengerLoginActivity extends Activity {
 
     EditText email, password;
     String Lemail, Lpassword;
+    String st;
 
 
     @Override
@@ -67,10 +68,10 @@ public class PassengerLoginActivity extends Activity {
 
                 if (task.isSuccessful()) {
                     startActivity(new Intent(PassengerLoginActivity.this, PassengerProfileActivity.class));
-                    Toast.makeText(PassengerLoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PassengerLoginActivity.this, "Welcome " + email.getText(), Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Log.e("PassengerLoginn", task.getException().getMessage());
+                    Log.e("PassengerLogin", task.getException().getMessage());
                     Toast.makeText(PassengerLoginActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
                 }
                 progress.dismiss();

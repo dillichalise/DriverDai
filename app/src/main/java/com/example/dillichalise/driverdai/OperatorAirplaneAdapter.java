@@ -16,6 +16,8 @@ public class OperatorAirplaneAdapter extends SelectableAdapter<RecyclerView.View
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private List<AbstractItem> mItems;
+    private boolean clicksDisabled;
+
 
     public OperatorAirplaneAdapter(Context context, List<AbstractItem> items) {
         mOnSeatSelected = (OnSeatSelected) context;
@@ -24,8 +26,7 @@ public class OperatorAirplaneAdapter extends SelectableAdapter<RecyclerView.View
         mItems = items;
     }
 
-    public void setClicksDisabled(boolean b) {
-    }
+
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
@@ -33,13 +34,16 @@ public class OperatorAirplaneAdapter extends SelectableAdapter<RecyclerView.View
         if (type == AbstractItem.TYPE_CENTER) {
             final CenterItem item = (CenterItem) mItems.get(position);
             CenterViewHolder holder = (CenterViewHolder) viewHolder;
-            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    toggleSelection(position);
-                    mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
-                }
-            });
+            if (!clicksDisabled) {
+                holder.imgSeat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toggleSelection(position);
+                        mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
+                    }
+                });
+            }
+
             if (item.is_booked) {
                 holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal_booked));
                 holder.imgSeat.setEnabled(true);
@@ -59,14 +63,18 @@ public class OperatorAirplaneAdapter extends SelectableAdapter<RecyclerView.View
             } else {
                 holder.imgSeat.setImageDrawable(mContext.getResources().getDrawable(R.drawable.seat_normal));
             }
+
+            if (!clicksDisabled) {
+                holder.imgSeat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        toggleSelection(position);
+                        mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
+                    }
+                });
+
+            }
             holder.locationTV.setText(item.location);
-            holder.imgSeat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    toggleSelection(position);
-                    mOnSeatSelected.onSeatSelected(getSelectedItems(), getSelectedItemCount());
-                }
-            });
 
 
             holder.imgSeatSelected.setVisibility(isSelected(position) ? View.VISIBLE : View.INVISIBLE);
@@ -96,6 +104,10 @@ public class OperatorAirplaneAdapter extends SelectableAdapter<RecyclerView.View
             View itemView = new View(mContext);
             return new EmptyViewHolder(itemView);
         }
+    }
+
+    public void setClicksDisabled(boolean clicksDisabled) {
+        this.clicksDisabled = clicksDisabled;
     }
 
     private static class EdgeViewHolder extends RecyclerView.ViewHolder {
